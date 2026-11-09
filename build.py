@@ -1,5 +1,11 @@
 import re
 BASE="https://loancalculatorforacar.github.io"
+AUTHOR="Mansoor Khan"   # change to your real name
+BIO="builds free online finance tools and writes plain-English guides about car loans, payments and budgeting. Every example in these guides is calculated with the standard loan payment formula."
+AD_URL="https://www.profitableratecpmnetwork.com/fdi39i9ey?key=4be333bc82ce1e57d7cc0aa318245d4a"
+AD=f'<aside class="ad" aria-label="Advertisement"><p>Advertisement</p><iframe src="{AD_URL}" title="Advertisement" width="100%" height="250" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></aside>'
+BYL=lambda rel:f'<p class="byline">By <a href="{rel}about.html">{AUTHOR}</a> · Published <time datetime="2026-11-09">November 9, 2026</time> · Updated <time datetime="2026-11-09">November 9, 2026</time></p>'
+AUTHBOX=lambda rel:f'<div class="author-box"><strong>About the author</strong><p>{AUTHOR} {BIO} <a href="{rel}about.html">More about the author</a>.</p></div>'
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">'
 def head(title,desc,path,rel,schema,img="images/hero-car.svg",typ="website"):
     return f'''<!DOCTYPE html>
@@ -12,7 +18,7 @@ def head(title,desc,path,rel,schema,img="images/hero-car.svg",typ="website"):
 <link rel="stylesheet" href="{rel}css/style.css">
 <script type="application/ld+json">{schema}</script></head><body>
 <header class="site"><div class="wrap"><a class="brand" href="{rel}index.html">CarLoanCalc</a><nav aria-label="Main"><a href="{rel}index.html#calculator">Calculator</a><a href="{rel}index.html#articles">Guides</a><a href="{rel}index.html#faq">FAQ</a></nav></div></header>'''
-FOOT=lambda rel:f'''<footer><div class="wrap"><p>&copy; 2026 CarLoanCalc. Estimates are for information only and are not financial advice. Your lender’s offer may differ.</p><p><a href="{rel}index.html">Car loan calculator</a> · <a href="{rel}articles/how-car-loan-payments-are-calculated.html">How payments work</a> · <a href="{rel}articles/how-much-car-can-i-afford.html">How much car can I afford</a></p></div></footer></body></html>'''
+FOOT=lambda rel:AD+f'''<footer><div class="wrap"><p>&copy; 2026 CarLoanCalc. Estimates are for information only and are not financial advice. Your lender’s offer may differ.</p><p><a href="{rel}index.html">Car loan calculator</a> · <a href="{rel}index.html#articles">All guides</a> · <a href="{rel}about.html">About</a> · <a href="{rel}privacy.html">Privacy</a></p></div></footer></body></html>'''
 
 # ---------- HOME ----------
 faq=[("How do I calculate a car loan payment?","Subtract your down payment and trade-in from the vehicle price, add sales tax and fees, then divide the loan into equal monthly payments that include interest. Our car loan calculator does this instantly using the standard amortization formula."),
@@ -23,12 +29,12 @@ faq=[("How do I calculate a car loan payment?","Subtract your down payment and t
 ("Is the car loan calculator free?","Yes. It is free, needs no sign-up, and runs entirely in your browser. Nothing you type is sent or stored.")]
 import json
 faqld=json.dumps({"@context":"https://schema.org","@graph":[
- {"@type":"WebApplication","name":"Car Loan Calculator","url":BASE+"/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+ {"@type":"WebApplication","name":"Car Loan Calculator","url":BASE+"/","applicationCategory":"FinanceApplication","datePublished":"2026-11-09","dateModified":"2026-11-09","author":{"@type":"Person","name":AUTHOR},"operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
  {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq]}]})
 faqhtml="".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q,a in faq)
 home=head("Car Loan Calculator: Estimate Your Monthly Payment (Free)","Free loan calculator for a car. Enter price, down payment, trade-in, rate, term and tax to see your monthly payment, total interest and a yearly payoff schedule.","index.html","",faqld)+f'''
 <main class="wrap">
-<div class="hero"><div><h1>Loan calculator for a car</h1><p>See what a car will really cost each month. Enter the price, your down payment and the interest rate. The result updates as you type.</p><p>Free, private, and built on the same formula lenders use.</p></div>
+<div class="hero"><div><h1>Loan calculator for a car</h1><p>See what a car will really cost each month. Enter the price, your down payment and the interest rate. The result updates as you type.</p><p>Free, private, and built on the same formula lenders use.</p>{BYL("")}</div>
 <img src="images/hero-car.svg" width="600" height="360" alt="Illustration of a yellow sedan next to a monthly car loan payment estimate"></div>
 <section id="calculator" aria-label="Car loan calculator"><div class="calc">
 <form id="calc-form" novalidate><div class="fields">
@@ -52,9 +58,9 @@ home=head("Car Loan Calculator: Estimate Your Monthly Payment (Free)","Free loan
 <p><strong>M</strong> is the monthly payment, <strong>P</strong> the amount borrowed, <strong>r</strong> the monthly rate (APR ÷ 12), and <strong>n</strong> the number of monthly payments. Example: borrowing $26,000 at 6.5% for 60 months gives a payment of about $509.</p></section>
 
 <section class="prose"><h2>Ways to lower your car payment</h2><ul>
-<li><strong>Put more down.</strong> Every extra $1,000 down cuts your payment and your interest.</li>
+<li><strong>Put more down.</strong> Every extra $1,000 down cuts your payment and your interest (<a href="articles/how-much-down-payment-on-a-car.html">how much to put down</a>).</li>
 <li><strong>Improve your rate.</strong> Get pre-approved at a bank or credit union, then ask the dealer to beat it.</li>
-<li><strong>Choose a shorter term if you can.</strong> A 48-month loan costs far less interest than an 84-month loan.</li>
+<li><strong>Choose a shorter term if you can.</strong> A 48-month loan costs far less interest than an 84-month loan (<a href="articles/car-loan-term-48-60-72-84-months.html">compare loan terms</a>).</li>
 <li><strong>Negotiate the price, not the payment.</strong> A lower price helps in every line of the calculator.</li>
 <li><strong>Use your trade-in.</strong> In many states it also lowers the amount that is taxed.</li></ul></section>
 
@@ -90,18 +96,19 @@ arts=[("how-car-loan-payments-are-calculated","How Car Loan Payments Are Calcula
 exec(open("articles_extra.py").read())
 for slug,t,d,im,alt,body in arts:
     path=f"articles/{slug}.html"
-    sch=json.dumps({"@context":"https://schema.org","@type":"Article","headline":t,"description":d,"image":f"{BASE}/images/{im}","datePublished":"2026-11-09","dateModified":"2026-11-09","author":{"@type":"Organization","name":"CarLoanCalc"},"mainEntityOfPage":f"{BASE}/{path}"})
+    sch=json.dumps({"@context":"https://schema.org","@type":"Article","headline":t,"description":d,"image":f"{BASE}/images/{im}","datePublished":"2026-11-09","dateModified":"2026-11-09","author":{"@type":"Person","name":AUTHOR,"url":BASE+"/about.html"},"mainEntityOfPage":f"{BASE}/{path}"})
     other=[a for a in arts if a[0]!=slug][0]
+    related="".join(f'<li><a href="{a[0]}.html">{a[1]}</a></li>' for a in arts if a[0]!=slug)
     page=head(t+" | CarLoanCalc",d,path,"../",sch,"images/"+im,"article")+f'''
 <div class="wrap crumbs"><a href="../index.html">Car loan calculator</a> / Guides</div>
-<article class="post"><h1>{t}</h1><img src="../images/{im}" width="600" height="320" alt="{alt}">{body}
+<article class="post"><h1>{t}</h1>{BYL("../")}<img src="../images/{im}" width="600" height="320" alt="{alt}">{body}
 <div class="cta"><strong>Try it with your numbers.</strong> Use the <a href="../index.html#calculator">free car loan calculator</a> to see your monthly payment.</div>
-<p>Next: <a href="{other[0]}.html">{other[1]}</a></p></article>'''+FOOT("../")
+<h2>Related guides</h2><ul>{related}</ul>{AUTHBOX("../")}</article>'''+FOOT("../")
     open(path,"w").write(page)
 
 # ---------- ROBOTS / SITEMAP ----------
 open("robots.txt","w").write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
-urls=["",*[f"articles/{a[0]}.html" for a in arts]]
+urls=["","about.html","privacy.html",*[f"articles/{a[0]}.html" for a in arts]]
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{BASE}/{u}</loc><lastmod>2026-11-09</lastmod></url>" for u in urls)+"</urlset>")
 open("404.html","w").write(head("Page not found | CarLoanCalc","Page not found.","404.html","",'{}').replace('<meta name="robots" content="index, follow, max-image-preview:large">','<meta name="robots" content="noindex">')+'<main class="wrap"><h1>Page not found</h1><p><a href="index.html">Go to the car loan calculator</a></p></main></body></html>')
 open("README.md","w").write("# Car loan calculator site\n\n1. Open `build.py`, set `BASE` to your GitHub Pages URL (e.g. https://name.github.io/repo), run `python3 build.py`.\n2. Push all files to a GitHub repo; Settings > Pages > Deploy from branch `main` / root.\n3. Submit `sitemap.xml` in Google Search Console.\n")
@@ -111,3 +118,9 @@ h=open("index.html").read()
 new="".join(f'<a class="card" href="articles/{a[0]}.html"><img src="images/{a[3]}" width="600" height="320" loading="lazy" alt="{a[4]}"><div><h3>{a[1]}</h3><p>{a[2][:95]}…</p></div></a>' for a in arts[2:])
 h=h.replace('</div></a></div></section>','</div></a>'+new+'</div></section>',1)
 open("index.html","w").write(h)
+
+# ---- about, privacy, llms.txt ----
+sch=json.dumps({"@context":"https://schema.org","@type":"Person","name":AUTHOR,"url":BASE+"/about.html","description":AUTHOR+" "+BIO,"worksFor":{"@type":"Organization","name":"CarLoanCalc","url":BASE+"/"}})
+open("about.html","w").write(head("About the author | CarLoanCalc","About the author of CarLoanCalc and how the car loan calculator and guides are made.","about.html","",sch)+f'<main class="wrap prose"><h1>About CarLoanCalc</h1><p>{AUTHOR} {BIO}</p><p>CarLoanCalc is free. The calculator runs in your browser and does not send or store what you type. Results are estimates; your lender’s final offer may differ.</p><p>Last updated <time datetime="2026-11-09">November 9, 2026</time>. <a href="index.html">Use the car loan calculator</a>.</p></main>'+FOOT(""))
+open("privacy.html","w").write(head("Privacy policy | CarLoanCalc","How CarLoanCalc handles your data, cookies, fonts and advertising.","privacy.html","",'{}')+'<main class="wrap prose"><h1>Privacy policy</h1><p>The calculator works entirely in your browser. The numbers you enter are not sent to us or stored.</p><p>This site loads fonts from Google Fonts. It also shows an advertisement from a third-party ad network, which may use cookies or similar technology to show ads and measure results. We do not control those practices. You can limit cookies in your browser settings.</p><p>Last updated <time datetime="2026-11-09">November 9, 2026</time>. <a href="index.html">Back to the calculator</a>.</p></main>'+FOOT(""))
+open("llms.txt","w").write("# CarLoanCalc\n\n> Free car loan calculator and plain-English guides. Estimates monthly payment, total interest and a yearly payoff schedule from price, down payment, trade-in, APR, term, sales tax and fees.\n\n## Tool\n- [Car loan calculator]("+BASE+"/): the main calculator\n\n## Guides\n"+"".join(f"- [{a[1]}]({BASE}/articles/{a[0]}.html): {a[2]}\n" for a in arts)+"\n## About\n- [About the author]("+BASE+"/about.html)\n- [Privacy]("+BASE+"/privacy.html)\n\nAuthor: "+AUTHOR+". Updated 2026-11-09. Figures are estimates and not financial advice.\n")

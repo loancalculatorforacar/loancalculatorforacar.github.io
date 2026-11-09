@@ -1,0 +1,20 @@
+# CarLoanCalc
+
+> Free car loan calculator and plain-English guides. Estimates monthly payment, total interest and a yearly payoff schedule from price, down payment, trade-in, APR, term, sales tax and fees.
+
+## Tool
+- [Car loan calculator](https://loancalculatorforacar.github.io/): the main calculator
+
+## Guides
+- [How Car Loan Payments Are Calculated (Formula and Example)](https://loancalculatorforacar.github.io/articles/how-car-loan-payments-are-calculated.html): Learn the car loan payment formula, see a worked example, and understand how principal and interest change over time.
+- [How Much Car Can I Afford? A Simple Budget Guide](https://loancalculatorforacar.github.io/articles/how-much-car-can-i-afford.html): Use the 20/4/10 rule and a car loan calculator to find a car price and monthly payment that fit your budget.
+- [Car Loan Term Compared: 48, 60, 72 or 84 Months?](https://loancalculatorforacar.github.io/articles/car-loan-term-48-60-72-84-months.html): Compare monthly payment and total interest for 48, 60, 72 and 84 month car loans, with a worked example and advice on choosing a term.
+- [New vs Used Car Loan: Rates, Payments and Which Is Cheaper](https://loancalculatorforacar.github.io/articles/new-vs-used-car-loan.html): Understand how new and used car loans differ in interest rate, depreciation and monthly cost, and how to decide which is better for you.
+- [How Much Down Payment Should You Put on a Car?](https://loancalculatorforacar.github.io/articles/how-much-down-payment-on-a-car.html): Learn how much to put down on a new or used car, how a down payment cuts your monthly payment and interest, and the 20% guideline.
+- [How to Pay Off a Car Loan Early and Save Interest](https://loancalculatorforacar.github.io/articles/how-to-pay-off-a-car-loan-early.html): Find out how extra payments shorten your car loan and cut interest, what to check before paying early, and the best ways to do it.
+
+## About
+- [About the author](https://loancalculatorforacar.github.io/about.html)
+- [Privacy](https://loancalculatorforacar.github.io/privacy.html)
+
+Author: Mansoor Khan. Updated 2026-11-09. Figures are estimates and not financial advice.
