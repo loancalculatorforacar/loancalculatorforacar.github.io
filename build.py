@@ -87,6 +87,7 @@ arts=[("how-car-loan-payments-are-calculated","How Car Loan Payments Are Calcula
 <h2>Example</h2><p>If you earn $5,000 a month before tax, 10% is $500 for the payment and insurance together. With $150 insurance, aim for a payment near $350. Use the calculator to try prices until the monthly figure lands there.</p>
 <h2>Costs people forget</h2><p>Sales tax, registration, insurance increases, fuel, maintenance and tires can add hundreds per month. Add them before you decide.</p>
 <h2>Get pre-approved first</h2><p>Ask your bank or credit union for a pre-approved rate. You will know your real APR, and you can compare the dealer’s offer fairly.</p>''')]
+exec(open("articles_extra.py").read())
 for slug,t,d,im,alt,body in arts:
     path=f"articles/{slug}.html"
     sch=json.dumps({"@context":"https://schema.org","@type":"Article","headline":t,"description":d,"image":f"{BASE}/images/{im}","datePublished":"2026-11-09","dateModified":"2026-11-09","author":{"@type":"Organization","name":"CarLoanCalc"},"mainEntityOfPage":f"{BASE}/{path}"})
@@ -104,3 +105,9 @@ urls=["",*[f"articles/{a[0]}.html" for a in arts]]
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{BASE}/{u}</loc><lastmod>2026-11-09</lastmod></url>" for u in urls)+"</urlset>")
 open("404.html","w").write(head("Page not found | CarLoanCalc","Page not found.","404.html","",'{}').replace('<meta name="robots" content="index, follow, max-image-preview:large">','<meta name="robots" content="noindex">')+'<main class="wrap"><h1>Page not found</h1><p><a href="index.html">Go to the car loan calculator</a></p></main></body></html>')
 open("README.md","w").write("# Car loan calculator site\n\n1. Open `build.py`, set `BASE` to your GitHub Pages URL (e.g. https://name.github.io/repo), run `python3 build.py`.\n2. Push all files to a GitHub repo; Settings > Pages > Deploy from branch `main` / root.\n3. Submit `sitemap.xml` in Google Search Console.\n")
+
+# ---- add new article cards to home page ----
+h=open("index.html").read()
+new="".join(f'<a class="card" href="articles/{a[0]}.html"><img src="images/{a[3]}" width="600" height="320" loading="lazy" alt="{a[4]}"><div><h3>{a[1]}</h3><p>{a[2][:95]}…</p></div></a>' for a in arts[2:])
+h=h.replace('</div></a></div></section>','</div></a>'+new+'</div></section>',1)
+open("index.html","w").write(h)
