@@ -3,7 +3,7 @@ BASE="https://loancalculatorforacar.github.io"
 AUTHOR="Mansoor Khan"   # change to your real name
 BIO="builds free online finance tools and writes plain-English guides about car loans, payments and budgeting. Every example in these guides is calculated with the standard loan payment formula."
 AD_URL="https://www.profitableratecpmnetwork.com/fdi39i9ey?key=4be333bc82ce1e57d7cc0aa318245d4a"
-AD=f'<aside class="ad" aria-label="Advertisement"><p>Advertisement</p><iframe src="{AD_URL}" title="Advertisement" width="100%" height="250" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></aside>'
+AD=f'<aside class="ad" aria-label="Advertisement"><p>Advertisement</p><iframe src="{AD_URL}" width="100%" height="300" style="border: none; border-radius: 10px; overflow: hidden;" scrolling="no" loading="lazy" title="Ad"></iframe></aside>'
 BYL=lambda rel:f'<p class="byline">By <a href="{rel}about.html">{AUTHOR}</a> · Published <time datetime="2026-11-09">November 9, 2026</time> · Updated <time datetime="2026-11-09">November 9, 2026</time></p>'
 AUTHBOX=lambda rel:f'<div class="author-box"><strong>About the author</strong><p>{AUTHOR} {BIO} <a href="{rel}about.html">More about the author</a>.</p></div>'
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">'

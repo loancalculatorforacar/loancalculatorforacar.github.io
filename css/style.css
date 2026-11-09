@@ -47,4 +47,4 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding:28px 0
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .byline{font-family:Sora,system-ui,sans-serif;font-size:.85rem;color:var(--muted);margin:0 0 16px}
 .author-box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-top:28px}.author-box p{margin:6px 0 0}
-.ad{max-width:1080px;margin:0 auto;padding:10px 20px 30px}.ad p{font:.75rem Sora,sans-serif;color:var(--muted);margin:0 0 4px}.ad iframe{width:100%;height:250px;border:0;background:var(--surface)}
+.ad{max-width:1080px;margin:0 auto;padding:10px 20px 30px}.ad p{font:.75rem Sora,sans-serif;color:var(--muted);margin:0 0 4px}.ad iframe{display:block}
